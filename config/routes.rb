@@ -3,6 +3,7 @@ Testapp::Application.routes.draw do
   # first created -> highest priority.
 
   match 'locator' => 'locator#index'
+  match 'locator2' => 'locator#index2'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
