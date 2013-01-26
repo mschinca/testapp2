@@ -39,12 +39,14 @@ $(document).ready(function() {
 		// Add Marker
 		var marker1 = new google.maps.Marker({
 			position: new google.maps.LatLng(agencies[i].lat,agencies[i].lng),
+                        index: i,
 		    map: map
 		});	
 
 		// Add listener for a click on the pin
 		google.maps.event.addListener(marker1, 'click', function() {  
 			infowindow1.open(map, marker1);  
+			showFields(marker1.index);
 		});
 
 		// Add information window
@@ -58,8 +60,7 @@ $(document).ready(function() {
 					  + '<br />Servizi: '
 					  + agencies[i].services
 					  + '<br />Tel: '
-					  + agencies[i].tel + '<br />'
-					  + '<a href="#" onclick="showFields(' + i + ');" title="Indicazioni stradali">Indicazioni stradali</a>')
+					  + agencies[i].tel + '<br />')
 		}); 
 	}
 	initializeDirections();
