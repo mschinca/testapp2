@@ -5,6 +5,9 @@ var showFields = function(selected){
 	alert('Calculate route: ' + selected);
 }
 var map;
+// Create a directions object and register a map and DIV to hold the 
+// resulting computed directions
+
 $(document).ready(function() {
 
 	//------- Google Maps ---------//
@@ -66,3 +69,27 @@ $(document).ready(function() {
 
 });
 
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+
+function initialize() {
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+}
+
+function calcRoute() {
+  var start = "Via Foro Boario 11, Ferrara";
+  var end = "Via Marozzo 50, Lagosanto Ferrara";
+  var request = {
+    origin:start,
+    destination:end,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
