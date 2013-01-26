@@ -4,6 +4,7 @@ var agencies = [
 var showFields = function(selected){
 	alert('Calculate route: ' + selected);
 }
+var map;
 $(document).ready(function() {
 
 	//------- Google Maps ---------//
@@ -18,7 +19,7 @@ $(document).ready(function() {
 	mapTypeId: google.maps.MapTypeId.ROADMAP // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
 	};  
 	// Calling the constructor, thereby initializing the map  
-	var map = new google.maps.Map(document.getElementById('map_div'), options);  
+	map = new google.maps.Map(document.getElementById('map_div'), options);  
 
 	// Define Marker properties
 	var image = new google.maps.MarkerImage('images/marker.png',
