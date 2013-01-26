@@ -6,6 +6,7 @@ var showFields = function(selected){
         $('#agencyNumber').val(selected);
 }
 var map;
+var markers = [];
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
 
@@ -37,16 +38,17 @@ $(document).ready(function() {
 
 	for (var i=0; i< agencies.length; i++){
 		// Add Marker
-		var marker1 = new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(agencies[i].lat,agencies[i].lng),
                         index: i,
 		    map: map
 		});	
+		markers.push(marker);
 
 		// Add listener for a click on the pin
-		google.maps.event.addListener(marker1, 'click', function() {  
-			infowindow1.open(map, marker1);  
-			showFields(marker1.index);
+		google.maps.event.addListener(marker, 'click', function() {  
+			infowindow1.open(map, marker);  
+			showFields(marker.index);
 		});
 
 		// Add information window
@@ -65,6 +67,7 @@ $(document).ready(function() {
 	}
 	initializeDirections();
 	initializeAutocomplete();
+	initializeCalculate();
 
 	// Create information window
 	function createInfo(title, content) {
@@ -84,8 +87,8 @@ function initializeDirections() {
 }
 
 function calcRoute() {
-  var end = "Via Foro Boario 11, Ferrara";
-  var start = "Via Marozzo 50, Lagosanto Ferrara";
+  var end = markers[parseInt($('#agencyNumber').val())].position;
+  var start = $('#currentPosition').val();
   var request = {
     origin: start,
     destination: end,
@@ -105,4 +108,10 @@ function initializeAutocomplete(){
 	};
 
 	autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+
+function initializeCalculate(){
+	$('#doRoute').bind('click', function(event){
+		calcRoute();
+	});
 }
