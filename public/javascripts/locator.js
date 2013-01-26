@@ -1,8 +1,8 @@
 var agencies = [
-{ "index": "001", "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.824828, "lng": 11.60701 }
+{ "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.824828, "lng": 11.60701, "services": "Acquisto Investimenti Lottomatica RAEE", "tel": "0532 977111" }
 ];
-var showFields = function(){
-	alert('Calculate route');
+var showFields = function(selected){
+	alert('Calculate route: ' + selected);
 }
 $(document).ready(function() {
 
@@ -44,7 +44,17 @@ $(document).ready(function() {
 
 		// Add information window
 		var infowindow1 = new google.maps.InfoWindow({  
-			content:  createInfo('S18K - STUDIO18KARATI', '<br /><img src="images/' + agencies[i].image_path + '"></img><br />via Foro Boario, 11<br />44122 Ferrara<br />Servizi: Acquisto Investimenti Lottomatica RAEE<br />Tel: 0532 977111<br /><a href="#" onclick="showFields();" title="Indicazioni stradali">Indicazioni stradali</a>')
+			content:  createInfo('S18K - STUDIO18KARATI', '<br /><img src="images/' +
+					  agencies[i].image_path +
+					  '"></img><br />'
+					  + agencies[i].address1
+					  + '<br />'
+					  + agencies[i].address2
+					  + '<br />Servizi: '
+					  + agencies[i].services
+					  + '<br />Tel: '
+					  + agencies[i].tel + '<br />'
+					  + '<a href="#" onclick="showFields(' + i + ');" title="Indicazioni stradali">Indicazioni stradali</a>')
 		}); 
 	}
 
