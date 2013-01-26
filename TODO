@@ -2,4 +2,5 @@
 -integrate driving directions into graphics
 -enter a location (zoom to an area by city)
 -find closest agency (geocoding?)
+-refine infoWindow custom layout (2 columns?)
 -custom pin S18K
