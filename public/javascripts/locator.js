@@ -87,8 +87,8 @@ function calcRoute() {
   var end = "Via Foro Boario 11, Ferrara";
   var start = "Via Marozzo 50, Lagosanto Ferrara";
   var request = {
-    origin:start,
-    destination:end,
+    origin: start,
+    destination: end,
     travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {
