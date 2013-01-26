@@ -3,7 +3,13 @@
 <%= javascript_include_tag "locator" %>
 <div id="locator" style="width: 100%">
   <div id="spacer" style="margin-top:1em;">
-    <div id="navigation" style="width: 300px;float:left">Navigation
+    <div id="navigation" style="width: 300px;float:left">
+        <div id="directionFields">
+                La tua posizione:
+                <input id="currentPosition" type="text" name="lname" value="" style="width: 100%; height:2em;"><br /><br />
+                Agenzia:
+                <input id="agencyPosition" type="text" name="lname" value="" style="width: 100%; height:2em;"><br />
+        </div>
         <div id="directionsPanel"></div>
     </div>
     <div id="map_div" style="height: 600px; width: 1000px;float: right"></div>

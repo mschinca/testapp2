@@ -2,8 +2,7 @@ var agencies = [
 { "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.824828, "lng": 11.60701, "services": "Acquisto Investimenti Lottomatica RAEE", "tel": "0532 977111" }
 ];
 var showFields = function(selected){
-	calcRoute();
-	alert('Calculate route: ' + selected);
+        $('#agencyPosition').val(agencies[selected].address1 + agencies[selected].address2);
 }
 var map;
 // Create a directions object and register a map and DIV to hold the 
