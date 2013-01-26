@@ -1,4 +1,4 @@
-var showFields = function(infoWindow){
+var showFields = function(){
 	alert('Calculate route');
 }
 $(document).ready(function() {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 		
 	// Add information window
 	var infowindow1 = new google.maps.InfoWindow({  
-		content:  createInfo('S18K - STUDIO18KARATI', 'via Foro Boario, 11<br />44122 Ferrara<br />Servizi: Acquisto Investimenti Lottomatica RAEE<br />Tel: 0532 977111<br /><img src=""></img><a href="#" onclick="showFields();" title="Indicazioni stradali">Indicazioni stradali</a>')
+		content:  createInfo('S18K - STUDIO18KARATI', '<br /><img src="images/001_agency.png"></img><br />via Foro Boario, 11<br />44122 Ferrara<br />Servizi: Acquisto Investimenti Lottomatica RAEE<br />Tel: 0532 977111<br /><a href="#" onclick="showFields();" title="Indicazioni stradali">Indicazioni stradali</a>')
 	}); 
 	
 	// Create information window
