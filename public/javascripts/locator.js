@@ -1,13 +1,16 @@
+var showFields = function(infoWindow){
+	alert('Calculate route');
+}
 $(document).ready(function() {
 
 	//------- Google Maps ---------//
 		  
 	// Creating a LatLng object containing the coordinate for the center of the map
-	var latlng = new google.maps.LatLng(53.385846,-1.471385);
+	var latlng = new google.maps.LatLng(41.918629,12.612305);
 	  
 	// Creating an object literal containing the properties we want to pass to the map  
 	var options = {  
-		zoom: 15, // This number can be set to define the initial zoom level of the map
+		zoom: 6, // This number can be set to define the initial zoom level of the map
 		center: latlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
 	};  
@@ -26,7 +29,7 @@ $(document).ready(function() {
 	
 	// Add Marker
 	var marker1 = new google.maps.Marker({
-		position: new google.maps.LatLng(53.385846,-1.471385), 
+		position: new google.maps.LatLng(44.824828,11.60701), 
 		map: map
 	});	
 	
@@ -37,7 +40,7 @@ $(document).ready(function() {
 		
 	// Add information window
 	var infowindow1 = new google.maps.InfoWindow({  
-		content:  createInfo('Evoluted New Media', 'Ground Floor,<br />35 Lambert Street,<br />Sheffield,<br />South Yorkshire,<br />S3 7BH<br /><a href="http://localhost:3000/locator2" title="Click to view our website">Our Website</a>')
+		content:  createInfo('S18K - STUDIO18KARATI', 'via Foro Boario, 11<br />44122 Ferrara<br />Servizi: Acquisto Investimenti Lottomatica RAEE<br />Tel: 0532 977111<br /><img src=""></img><a href="#" onclick="showFields();" title="Indicazioni stradali">Indicazioni stradali</a>')
 	}); 
 	
 	// Create information window
