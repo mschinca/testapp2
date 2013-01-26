@@ -2,6 +2,7 @@ var agencies = [
 { "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.824828, "lng": 11.60701, "services": "Acquisto Investimenti Lottomatica RAEE", "tel": "0532 977111" }
 ];
 var showFields = function(selected){
+	calcRoute();
 	alert('Calculate route: ' + selected);
 }
 var map;
@@ -61,6 +62,7 @@ $(document).ready(function() {
 					  + '<a href="#" onclick="showFields(' + i + ');" title="Indicazioni stradali">Indicazioni stradali</a>')
 		}); 
 	}
+	initializeDirections();
 
 	// Create information window
 	function createInfo(title, content) {
@@ -73,15 +75,15 @@ var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 
-function initialize() {
+function initializeDirections() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 }
 
 function calcRoute() {
-  var start = "Via Foro Boario 11, Ferrara";
-  var end = "Via Marozzo 50, Lagosanto Ferrara";
+  var end = "Via Foro Boario 11, Ferrara";
+  var start = "Via Marozzo 50, Lagosanto Ferrara";
   var request = {
     origin:start,
     destination:end,
