@@ -11,6 +11,8 @@ var infowindows = [];
 var markerImage;
 var initialPosition = new google.maps.LatLng(41.918629,12.612305);
 var initialZoom = 6;
+var autocomplete;
+var suggestedPlace;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
 
@@ -70,9 +72,18 @@ $(document).ready(function() {
 			showFields(marker.index);
 		        toggleDoRoute();
 		});
+
 	}
 	initializeDirections();
 	initializeAutocomplete();
+	// Zoom and center map if user selects a suggested place
+	google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		if ($('#agencyPosition').val() == ""){
+			suggestedPlace = autocomplete.getPlace();
+			map.setCenter(autocomplete.getPlace().geometry.location);
+			map.setZoom(13);
+		}
+	});
 	initializeCalculate();
 
 	// Create information window
