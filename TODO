@@ -1,9 +1,9 @@
--reset search
 -enter a location (zoom to an area by city)
--find closest agency (geocoding?)
+-adding more agencies!
 -refine infoWindow custom layout (2 columns?)
 -custom pin S18K
--zoom closer when clicking on an InfoWindow
 -printing
--notify server when a user has completed a calcRoute()
 -deploy to Heroku
+-zoom closer when clicking on an InfoWindow
+-notify server when a user has completed a calcRoute()
+-find closest agency (geocoding?)
