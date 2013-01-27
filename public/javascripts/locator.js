@@ -68,6 +68,7 @@ $(document).ready(function() {
 		google.maps.event.addListener(marker, 'click', function() {  
 			infowindows[marker.index].open(map, marker);  
 			showFields(marker.index);
+		        toggleDoRoute();
 		});
 	}
 	initializeDirections();
@@ -134,9 +135,7 @@ function initializeCalculate(){
 	});
         $('.locationField').bind('keyup change', function(event){
 		$('#directionsPanel').empty();
-		if ($('#currentPosition').val() == "" || $('#agencyPosition').val() == "")
-			$('#doRoute').attr('disabled', true);
-		else $('#doRoute').attr('disabled', false);
+		toggleDoRoute();
 	});
 }
 
@@ -152,9 +151,15 @@ function resetLocator(){
 		directionsDisplay.setMap(null);
 		resetCurrentLocationMarker();
 	}
+	$('#doRoute').attr('disabled', 'disabled');
 }
 
 function resetCurrentLocationMarker(){
 		if (currentPositionMarker != undefined)
 			currentPositionMarker.setMap(null);
+}
+function toggleDoRoute(){
+	if ($('#currentPosition').val() == "" || $('#agencyPosition').val() == "")
+		$('#doRoute').attr('disabled', 'disabled');
+	else $('#doRoute').attr('disabled', false);
 }
