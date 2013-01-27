@@ -1,9 +1,9 @@
+-zoom closer when clicking on an InfoWindow
 -adding more agencies!
 -agencies displayed as grouped options select menu
 -refine infoWindow custom layout (2 columns?)
 -custom pin S18K
 -printing
 -deploy to Heroku
--zoom closer when clicking on an InfoWindow
 -notify server when a user has completed a calcRoute()
 -find closest agency (geocoding?)
