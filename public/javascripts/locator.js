@@ -183,6 +183,10 @@ function createMarker(agency, map, agencyIndex){
 			}
 			showFields(marker.index);
 		        toggleDoRoute();
+			//If there is a previous valid calcRoute(), and a valid start point,
+			//calculate new route immediately
+			if (directionsDisplay.map != null && directionsDisplay.getDirections() != undefined)
+				calcRoute();
 		});
 	return marker;
 }
