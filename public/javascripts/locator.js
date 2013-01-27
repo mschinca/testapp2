@@ -175,7 +175,7 @@ function createMarker(agency, map, agencyIndex){
 	});	
 		// Add listener for a click on the pin
 		google.maps.event.addListener(marker, 'click', function() {  
-			infowindows[marker.index].open(map, marker);  
+			setTimeout(function(){infowindows[marker.index].open(map, marker);}, 500);
 			map.setCenter(marker.position);
 			map.setZoom(zoomInLevel);
 			showFields(marker.index);
