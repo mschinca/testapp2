@@ -31,8 +31,9 @@ $(document).ready(function() {
 	// Creating an object literal containing the properties we want to pass to the map  
 	var options = {  
 		zoom: initialZoom, // This number can be set to define the initial zoom level of the map
-	center: initialPosition,
-	mapTypeId: google.maps.MapTypeId.ROADMAP // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
+		center: initialPosition,
+		streetViewControl: false,
+		mapTypeId: google.maps.MapTypeId.ROADMAP // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
 	};  
 	// Calling the constructor, thereby initializing the map  
 	map = new google.maps.Map(document.getElementById('map_div'), options);  
