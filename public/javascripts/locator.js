@@ -9,6 +9,8 @@ var map;
 var markers = [];
 var infowindows = [];
 var markerImage;
+var initialPosition = new google.maps.LatLng(41.918629,12.612305);
+var initialZoom = 6;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
 
@@ -17,12 +19,11 @@ $(document).ready(function() {
 	//------- Google Maps ---------//
 
 	// Creating a LatLng object containing the coordinate for the center of the map
-	var latlng = new google.maps.LatLng(41.918629,12.612305);
 
 	// Creating an object literal containing the properties we want to pass to the map  
 	var options = {  
-		zoom: 6, // This number can be set to define the initial zoom level of the map
-	center: latlng,
+		zoom: initialZoom, // This number can be set to define the initial zoom level of the map
+	center: initialPosition,
 	mapTypeId: google.maps.MapTypeId.ROADMAP // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
 	};  
 	// Calling the constructor, thereby initializing the map  
@@ -83,6 +84,7 @@ $(document).ready(function() {
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
+var currentPositionMarker;
 
 function initializeDirections() {
   directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
@@ -91,6 +93,7 @@ function initializeDirections() {
 }
 
 function calcRoute() {
+  resetCurrentLocationMarker();
   var selectedAgency = parseInt($('#agencyNumber').val());
   var end = markers[selectedAgency].position;
   var start = $('#currentPosition').val();
@@ -103,7 +106,7 @@ function calcRoute() {
     if (status == google.maps.DirectionsStatus.OK) {
       infowindows[selectedAgency].close();
       directionsDisplay.setDirections(response);
-      new google.maps.Marker({
+      currentPositionMarker = new google.maps.Marker({
 	  position: response.routes[0].legs[0].start_location,
 	  map: map,
 	  title: "La tua posizione"
@@ -125,9 +128,32 @@ function initializeCalculate(){
 	$('#doRoute').bind('click', function(event){
 		calcRoute();
 	});
+	$('#resetLocator').bind('click', function(event){
+		resetLocator();
+	});
         $('.locationField').bind('keyup change', function(event){
+		$('#directionsPanel').empty();
 		if ($('#currentPosition').val() == "" || $('#agencyPosition').val() == "")
 			$('#doRoute').attr('disabled', true);
 		else $('#doRoute').attr('disabled', false);
 	});
+}
+
+function resetLocator(){
+	map.setCenter(initialPosition);
+        map.setZoom(initialZoom);
+	$('#directionsPanel').empty();
+	$('.locationField').val('');
+        var selectedAgencyIndex = $('#agencyNumber').val();
+	if (selectedAgencyIndex != ""){
+		var selectedAgency = parseInt(selectedAgencyIndex);
+		infowindows[selectedAgency].close();
+		directionsDisplay.setMap(null);
+		resetCurrentLocationMarker();
+	}
+}
+
+function resetCurrentLocationMarker(){
+		if (currentPositionMarker != undefined)
+			currentPositionMarker.setMap(null);
 }
