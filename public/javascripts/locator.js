@@ -125,4 +125,9 @@ function initializeCalculate(){
 	$('#doRoute').bind('click', function(event){
 		calcRoute();
 	});
+        $('.locationField').bind('keyup change', function(event){
+		if ($('#currentPosition').val() == "" || $('#agencyPosition').val() == "")
+			$('#doRoute').attr('disabled', true);
+		else $('#doRoute').attr('disabled', false);
+	});
 }
