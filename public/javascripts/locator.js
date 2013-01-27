@@ -177,8 +177,10 @@ function createMarker(agency, map, agencyIndex){
 		google.maps.event.addListener(marker, 'click', function() {  
 			closeAllInfoWindows();
 			infowindows[marker.index].open(map, marker);
-			map.setCenter(marker.position);
-			map.setZoom(zoomInLevel);
+			if (map.getZoom() < zoomInLevel){
+				map.setCenter(marker.position);
+				map.setZoom(zoomInLevel);
+			}
 			showFields(marker.index);
 		        toggleDoRoute();
 		});
