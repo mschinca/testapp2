@@ -94,6 +94,7 @@ function initializeDirections() {
 
 function calcRoute() {
   resetCurrentLocationMarker();
+  directionsDisplay.setMap(map);
   var selectedAgency = parseInt($('#agencyNumber').val());
   var end = markers[selectedAgency].position;
   var start = $('#currentPosition').val();
