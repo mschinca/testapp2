@@ -151,7 +151,7 @@ function resetLocator(){
         var selectedAgencyIndex = $('#agencyNumber').val();
 	if (selectedAgencyIndex != ""){
 		var selectedAgency = parseInt(selectedAgencyIndex);
-		infowindows[selectedAgency].close();
+		closeAllInfoWindows();
 		directionsDisplay.setMap(null);
 		resetCurrentLocationMarker();
 	}
@@ -175,11 +175,16 @@ function createMarker(agency, map, agencyIndex){
 	});	
 		// Add listener for a click on the pin
 		google.maps.event.addListener(marker, 'click', function() {  
-			setTimeout(function(){infowindows[marker.index].open(map, marker);}, 500);
+			closeAllInfoWindows();
+			infowindows[marker.index].open(map, marker);
 			map.setCenter(marker.position);
 			map.setZoom(zoomInLevel);
 			showFields(marker.index);
 		        toggleDoRoute();
 		});
 	return marker;
+}
+
+function closeAllInfoWindows(){
+	$.each(infowindows,function(key,infowindow){infowindow.close()});
 }
