@@ -1,4 +1,3 @@
--bugfix: hide ALL infowindow right after calculating routes
 -zoom in only if needed when clicking on a marker
 -calculate routes immediately after first calculation, if user clicks on another marker
 -adding more agencies! count=2
