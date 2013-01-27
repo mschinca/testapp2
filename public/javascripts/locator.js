@@ -1,5 +1,6 @@
 var agencies = [
-{ "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.824828, "lng": 11.60701, "services": "Acquisto Investimenti Lottomatica RAEE", "tel": "0532 977111" }
+{ "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.82488, "lng": 11.606901, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "0532 977111" },
+{ "address1": "Via Della Cittadella, 49", "address2": "44121 Ferrara", "image_path": "002_agency.png", "lat": 44.843248, "lng": 11.613268, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "0532 249740" }
 ];
 var showFields = function(selected){
         $('#agencyPosition').val(agencies[selected].address1 + ', ' + agencies[selected].address2);
@@ -47,11 +48,7 @@ $(document).ready(function() {
 
 	for (var i=0; i< agencies.length; i++){
 		// Add Marker
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(agencies[i].lat,agencies[i].lng),
-                        index: i,
-		    map: map
-		});	
+		var marker = createMarker(agencies[i], map, i);
 		markers.push(marker);
 
 		// Add information window
@@ -70,12 +67,6 @@ $(document).ready(function() {
 
 		infowindows.push(infowindow);
 
-		// Add listener for a click on the pin
-		google.maps.event.addListener(marker, 'click', function() {  
-			infowindows[marker.index].open(map, marker);  
-			showFields(marker.index);
-		        toggleDoRoute();
-		});
 
 	}
 	initializeDirections();
@@ -173,4 +164,18 @@ function toggleDoRoute(){
 	if ($('#currentPosition').val() == "" || $('#agencyPosition').val() == "")
 		$('#doRoute').attr('disabled', 'disabled');
 	else $('#doRoute').attr('disabled', false);
+}
+function createMarker(agency, map, agencyIndex){
+	var marker = new google.maps.Marker({
+		position: new google.maps.LatLng(agency.lat,agency.lng),
+		index: agencyIndex,
+	    map: map
+	});	
+		// Add listener for a click on the pin
+		google.maps.event.addListener(marker, 'click', function() {  
+			infowindows[marker.index].open(map, marker);  
+			showFields(marker.index);
+		        toggleDoRoute();
+		});
+	return marker;
 }
