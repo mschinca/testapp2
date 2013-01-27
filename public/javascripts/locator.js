@@ -13,6 +13,10 @@ var initialPosition = new google.maps.LatLng(41.918629,12.612305);
 var initialZoom = 6;
 var autocomplete;
 var suggestedPlace;
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var currentPositionMarker;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
 
@@ -93,10 +97,6 @@ $(document).ready(function() {
 
 });
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
-var currentPositionMarker;
 
 function initializeDirections() {
   directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
