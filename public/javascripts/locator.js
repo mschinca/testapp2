@@ -17,6 +17,7 @@ var suggestedPlace;
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
+var zoomInLevel = 13;
 var currentPositionMarker;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
@@ -76,7 +77,7 @@ $(document).ready(function() {
 		if ($('#agencyPosition').val() == ""){
 			suggestedPlace = autocomplete.getPlace();
 			map.setCenter(autocomplete.getPlace().geometry.location);
-			map.setZoom(13);
+			map.setZoom(zoomInLevel);
 		}
 	});
 	initializeCalculate();
@@ -174,6 +175,8 @@ function createMarker(agency, map, agencyIndex){
 		// Add listener for a click on the pin
 		google.maps.event.addListener(marker, 'click', function() {  
 			infowindows[marker.index].open(map, marker);  
+			map.setCenter(marker.position);
+			map.setZoom(zoomInLevel);
 			showFields(marker.index);
 		        toggleDoRoute();
 		});
