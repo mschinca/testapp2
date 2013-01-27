@@ -7,6 +7,8 @@ var showFields = function(selected){
 }
 var map;
 var markers = [];
+var infowindows = [];
+var markerImage;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
 
@@ -27,7 +29,7 @@ $(document).ready(function() {
 	map = new google.maps.Map(document.getElementById('map_div'), options);  
 
 	// Define Marker properties
-	var image = new google.maps.MarkerImage('images/marker.png',
+	markerImage = new google.maps.MarkerImage('images/marker.png',
 		// This marker is 129 pixels wide by 42 pixels tall.
 		new google.maps.Size(129, 42),
 		// The origin for this image is 0,0.
@@ -45,14 +47,8 @@ $(document).ready(function() {
 		});	
 		markers.push(marker);
 
-		// Add listener for a click on the pin
-		google.maps.event.addListener(marker, 'click', function() {  
-			infowindow1.open(map, marker);  
-			showFields(marker.index);
-		});
-
 		// Add information window
-		var infowindow1 = new google.maps.InfoWindow({  
+		var infowindow = new google.maps.InfoWindow({  
 			content:  createInfo('S18K - STUDIO18KARATI', '<br /><img src="images/' +
 					  agencies[i].image_path +
 					  '"></img><br />'
@@ -64,6 +60,14 @@ $(document).ready(function() {
 					  + '<br />Tel: '
 					  + agencies[i].tel + '<br />')
 		}); 
+
+		infowindows.push(infowindow);
+
+		// Add listener for a click on the pin
+		google.maps.event.addListener(marker, 'click', function() {  
+			infowindows[marker.index].open(map, marker);  
+			showFields(marker.index);
+		});
 	}
 	initializeDirections();
 	initializeAutocomplete();
@@ -81,13 +85,14 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 
 function initializeDirections() {
-  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 }
 
 function calcRoute() {
-  var end = markers[parseInt($('#agencyNumber').val())].position;
+  var selectedAgency = parseInt($('#agencyNumber').val());
+  var end = markers[selectedAgency].position;
   var start = $('#currentPosition').val();
   var request = {
     origin: start,
@@ -96,7 +101,13 @@ function calcRoute() {
   };
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
+      infowindows[selectedAgency].close();
       directionsDisplay.setDirections(response);
+      new google.maps.Marker({
+	  position: response.routes[0].legs[0].start_location,
+	  map: map,
+	  title: "La tua posizione"
+      });
     }
   });
 }
