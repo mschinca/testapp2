@@ -6,3 +6,4 @@
 -zoom closer when clicking on an InfoWindow
 -printing
 -notify server when a user has completed a calcRoute()
+-deploy to Heroku
