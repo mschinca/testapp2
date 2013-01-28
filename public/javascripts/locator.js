@@ -177,7 +177,8 @@ function createMarker(agency, map, agencyIndex){
 	var marker = new google.maps.Marker({
 		position: new google.maps.LatLng(agency.lat,agency.lng),
 		index: agencyIndex,
-	    map: map
+	    map: map,
+	    icon: markerImage
 	});	
 		// Add listener for a click on the pin
 		google.maps.event.addListener(marker, 'click', function() {  
