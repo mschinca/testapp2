@@ -22,7 +22,8 @@ var suggestedPlace;
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
-var zoomInLevel = 13;
+var zoomInLevelMarker = 13;
+var zoomInLevelPlace = 10;
 var currentPositionMarker;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
@@ -83,7 +84,7 @@ $(document).ready(function() {
 		if ($('#agencyPosition').val() == ""){
 			suggestedPlace = autocomplete.getPlace();
 			map.setCenter(autocomplete.getPlace().geometry.location);
-			map.setZoom(zoomInLevel);
+			map.setZoom(zoomInLevelPlace);
 		}
 	});
 	initializeCalculate();
@@ -182,9 +183,9 @@ function createMarker(agency, map, agencyIndex){
 		google.maps.event.addListener(marker, 'click', function() {  
 			closeAllInfoWindows();
 			infowindows[marker.index].open(map, marker);
-			if ((map.getZoom() < zoomInLevel) && !calcRouteAlreadyPerformed()){
+			if ((map.getZoom() < zoomInLevelMarker) && !calcRouteAlreadyPerformed()){
 				map.setCenter(marker.position);
-				map.setZoom(zoomInLevel);
+				map.setZoom(zoomInLevelMarker);
 			}
 			showFields(marker.index);
 		        toggleDoRoute();
