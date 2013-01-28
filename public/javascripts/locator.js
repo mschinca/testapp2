@@ -5,8 +5,10 @@ var agencies = [
 { "address1": "Via Farini, 6", "address2": "20154 Milano", "image_path": "004_agency.png", "lat": 45.483319, "lng": 9.181647, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "02 29000630" },
 { "address1": "Via Della Cittadella, 49", "address2": "44121 Ferrara", "image_path": "002_agency.png", "lat": 44.843248, "lng": 11.613268, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "0532 249740" }
 ];
+var oldAgencySelectedIndex; //do not perform calcRoute when multiple clicking on the same agency, display infoWindow instead
 var showFields = function(selected){
         $('#agencyPosition').val(agencies[selected].address1 + ', ' + agencies[selected].address2);
+	oldAgencySelectedIndex = $('#agencyNumber').val();
         $('#agencyNumber').val(selected);
 }
 var map;
@@ -189,7 +191,9 @@ function createMarker(agency, map, agencyIndex){
 			//If there is a previous valid calcRoute(), and a valid start point,
 			//calculate new route immediately
 			if (directionsDisplay.map != null && directionsDisplay.getDirections() != undefined)
-				calcRoute();
+				if (oldAgencySelectedIndex != $('#agencyNumber').val())
+					calcRoute();
+				else infowindows[marker.index].open(map, marker);
 		});
 	return marker;
 }
