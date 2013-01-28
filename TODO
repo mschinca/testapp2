@@ -1,7 +1,7 @@
+-adding more agencies! count=5
 -printing
 -browser testing
 *****************
--adding more agencies! count=5
 -agencies displayed as grouped options select menu
 -notify server when a user has completed a calcRoute()
 -find closest agency (geocoding?)

@@ -1,5 +1,7 @@
 var agencies = [
 { "address1": "Via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.82488, "lng": 11.606901, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "0532 977111" },
+{ "address1": "P.za Trento Trieste, 73", "address2": "44121 Ferrara", "image_path": "006_agency.png", "lat": 44.835027, "lng": 11.621017, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "0532 240152" },
+{ "address1": "V.le Cavour, 34", "address2": "44121 Ferrara", "image_path": "005_agency.png", "lat": 44.839037, "lng": 11.617983, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "0532 240481" },
 { "address1": "Via Della Zecca, 1", "address2": "40121 Bologna", "image_path": "003_agency.png", "lat": 44.494072, "lng": 11.341496, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "051 267568" },
 { "address1": "Via San Vitale 36/A", "address2": "40125 Bologna", "image_path": "000_agency.png", "lat": 44.494422, "lng": 11.349661, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "051 273854" },
 { "address1": "Via Farini, 6", "address2": "20154 Milano", "image_path": "004_agency.png", "lat": 45.483319, "lng": 9.181647, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "02 29000630" },
