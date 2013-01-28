@@ -23,7 +23,7 @@ var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 var zoomInLevelMarker = 13;
-var zoomInLevelPlace = 10;
+var zoomInLevelPlace = 11;
 var currentPositionMarker;
 // Create a directions object and register a map and DIV to hold the 
 // resulting computed directions
