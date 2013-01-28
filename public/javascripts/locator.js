@@ -182,7 +182,7 @@ function createMarker(agency, map, agencyIndex){
 		google.maps.event.addListener(marker, 'click', function() {  
 			closeAllInfoWindows();
 			infowindows[marker.index].open(map, marker);
-			if (map.getZoom() < zoomInLevel){
+			if ((map.getZoom() < zoomInLevel) && !calcRouteAlreadyPerformed()){
 				map.setCenter(marker.position);
 				map.setZoom(zoomInLevel);
 			}
@@ -190,7 +190,7 @@ function createMarker(agency, map, agencyIndex){
 		        toggleDoRoute();
 			//If there is a previous valid calcRoute(), and a valid start point,
 			//calculate new route immediately
-			if (directionsDisplay.map != null && directionsDisplay.getDirections() != undefined)
+			if (calcRouteAlreadyPerformed())
 				if (oldAgencySelectedIndex != $('#agencyNumber').val())
 					calcRoute();
 				else infowindows[marker.index].open(map, marker);
@@ -200,4 +200,7 @@ function createMarker(agency, map, agencyIndex){
 
 function closeAllInfoWindows(){
 	$.each(infowindows,function(key,infowindow){infowindow.close()});
+}
+function calcRouteAlreadyPerformed(){
+	return (directionsDisplay.map != null && directionsDisplay.getDirections() != undefined);
 }
