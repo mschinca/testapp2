@@ -5,6 +5,7 @@ var agencies = [
 { "address1": "Via Della Zecca, 1", "address2": "40121 Bologna", "image_path": "003_agency.png", "lat": 44.494072, "lng": 11.341496, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "051 267568" },
 { "address1": "Via San Vitale 36/A", "address2": "40125 Bologna", "image_path": "000_agency.png", "lat": 44.494422, "lng": 11.349661, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "051 273854" },
 { "address1": "Via Farini, 6", "address2": "20154 Milano", "image_path": "004_agency.png", "lat": 45.483319, "lng": 9.181647, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "02 29000630" },
+{ "address1": "Via Garibaldi 37/c e 37/d", "address2": "Copparo, FE", "image_path": "000_agency.png", "lat": 44.894463, "lng": 11.830612, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "0532 862050" },
 { "address1": "Via Della Cittadella, 49", "address2": "44121 Ferrara", "image_path": "002_agency.png", "lat": 44.843248, "lng": 11.613268, "services": "Acquisto, Investimenti,<br /> Lottomatica, RAEE", "tel": "0532 249740" }
 ];
 var oldAgencySelectedIndex; //do not perform calcRoute when multiple clicking on the same agency, display infoWindow instead
