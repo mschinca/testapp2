@@ -47,11 +47,11 @@ $(document).ready(function() {
 	// Define Marker properties
 	markerImage = new google.maps.MarkerImage('images/marker.png',
 		// This marker is 129 pixels wide by 42 pixels tall.
-		new google.maps.Size(129, 42),
+		new google.maps.Size(32, 37),
 		// The origin for this image is 0,0.
 		new google.maps.Point(0,0),
 		// The anchor for this image is the base of the flagpole at 18,42.
-		new google.maps.Point(18, 42)
+		new google.maps.Point(16, 36)
 		);
 
 	for (var i=0; i< agencies.length; i++){
