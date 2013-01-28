@@ -1,5 +1,8 @@
 var agencies = [
 { "address1": "via Foro Boario, 11", "address2": "44122 Ferrara", "image_path": "001_agency.png", "lat": 44.82488, "lng": 11.606901, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "0532 977111" },
+{ "address1": "via Della Zecca, 1", "address2": "40121 Bologna", "image_path": "003_agency.png", "lat": 44.494072, "lng": 11.341496, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "051 267568" },
+{ "address1": "Via San Vitale 36/A", "address2": "40125 Bologna", "image_path": "000_agency.png", "lat": 44.494422, "lng": 11.349661, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "051 273854" },
+{ "address1": "Via Farini, 6", "address2": "20154 Milano", "image_path": "004_agency.png", "lat": 45.483319, "lng": 9.181647, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "02 29000630" },
 { "address1": "Via Della Cittadella, 49", "address2": "44121 Ferrara", "image_path": "002_agency.png", "lat": 44.843248, "lng": 11.613268, "services": "Acquisto, Investimenti, Lottomatica, RAEE", "tel": "0532 249740" }
 ];
 var showFields = function(selected){
